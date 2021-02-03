@@ -1,5 +1,18 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+
+.secretWord{
+  text-align: center;
+  padding: 10px;
+  font-size: 48px;
+  font-family: "Arial"
+}
+
+.buttons {
+  margin: 0% auto;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  font-size: 18px;
+  font-family: "Arial";
 }
