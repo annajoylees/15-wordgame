@@ -1,10 +1,10 @@
+
 // importing commonWords package
 import { commonWords } from "./constants"
 
-
-//Word to be used
+// word to be used
 const secretWord = document.querySelector(".secretWord")
-let randomWord; //Empty variable used in getRandomWord() 
+let randomWord; // empty variable used in getRandomWord() 
 const threeLetterWords = commonWords.filter(function(word) {  // filter out words with 3 or more letters
     return word.length >= 3;
 })
@@ -22,36 +22,49 @@ function getRandomWord() {
 
 // replace random word with underscores
 function hideWord(randomWord){
-    //Replace each letter of word with '_'
+    // replace each letter of word with '_'
     for (var i = 0; i<randomWord.length; i++) {
-      // console.log(randomWord) <- Reference hidden word
+      // console.log(randomWord) <- reference hidden word
       let char = document.createElement("span"); //create empty <span> for each letter in the word
-      char.className = "char"; //span class name ".char"
+      char.className = "char"; // span class name ".char"
       
-      //Do not count a space as a letter
+      // do not count a space as a letter
       if (randomWord[i] === " "){
         char.innerHTML = " ";
       } else {
         char.innerHTML = "_ ";
       }
-      secretWord.append(char); //append each char to secretWord const (line 6)
+      secretWord.append(char); // append each char to secretWord const (line 6)
     }
   }
 
 ////
 
 // create alphabet buttons
-const btn = document.querySelector('#btn')
-let clickCount = 0
-function handleBtnClick(e){
-if (clickCount > 5) {
-    btn.setAttribute("disabled", true)
-}
-    clickCount++
+
+const btnContainer = document.querySelector('#alphabtn')
+const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+function printBtn() {
+    for (let letter of alphabet) {
+       let btn = document.createElement("button")
+       btn.id = letter
+       let t = document.createTextNode(letter)
+       btn.appendChild(t);
+       btnContainer.appendChild(btn);
+    }
 }
 
-btn.addEventListener('click', handleBtnClick)
+function handleBtnClick(e){
+    const letter = e.target.id
+    console.log(letter)
+}
+
+printBtn()
+btnContainer.addEventListener('click', handleBtnClick)   
+
 
 ////
 
 getRandomWord()
+
+
